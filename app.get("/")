@@ -1,0 +1,14 @@
+app.get('/', async (req, res) => {
+    const customObjects = 'https://api.hubapi.com/crm/v3/objects/p_tu_objeto_id?properties=name,bio,color'; // Reemplaza con tus propiedades
+    const headers = {
+        Authorization: `Bearer ${process.env.PRIVATE_APP_ACCESS_TOKEN}`,
+        'Content-Type': 'application/json'
+    };
+    try {
+        const resp = await axios.get(customObjects, { headers });
+        const data = resp.data.results;
+        res.render('homepage', { title: 'Custom Objects | HubSpot', data });      
+    } catch (error) {
+        console.error(error);
+    }
+});

@@ -1,0 +1,11 @@
+app.post('/update-cobj', async (req, res) => {
+    const update = {
+        properties: {
+            "name": req.body.newName,
+            "bio": req.body.newBio,
+            "color": req.body.newColor
+        }
+    }
+    // ... lógica de axios.post ...
+    res.redirect('/'); // Obligatorio: Redirigir a la home tras crear
+});
